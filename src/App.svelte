@@ -1,3 +1,7 @@
+<script>
+import CodeInput from "./CodeInput.svelte";
+
+</script>
 <style>
 
 	:root {
@@ -37,7 +41,7 @@
 
 	.body {
 		background-color: var(--back);
-		height: 100%;
+		height: 30%;
 		display: flex;
 		align-content: center;
 		justify-content: center;
@@ -71,3 +75,5 @@
 		Second
 	</div>
 </div>
+
+<CodeInput />
