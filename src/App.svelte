@@ -1,5 +1,8 @@
 <script>
+import Component01 from "./Lessons/Components/Level1/Component101.svelte";
+import Component201 from './Lessons/Components/Level2/Component201.svelte'
 import CodeInput from "./CodeInput.svelte";
+import Lesson from "./Lesson.svelte";
 
 </script>
 <style>
@@ -76,4 +79,8 @@ import CodeInput from "./CodeInput.svelte";
 	</div>
 </div>
 
-<CodeInput />
+<Lesson>
+	<Component01 />
+	<br /><br /><br />
+	<Component201 />
+</Lesson>
