@@ -1,52 +1,77 @@
 <script>
-    let scripts = 'let name = World',
-    style = 'p {\ncolour: blue\n}',
-    html = 'Hello {world}',
-    input = ["","","","","",""],
-    control = ["<script>", "<\/script>", "<style>", "</style>", "<p>", "</p>"]
+  import C101 from "./code";
+  import { C101inputs } from "./inputs";
+  let file = C101;
+  let input = [],
+    control = [];
 
-    function verify () {
-        for (let i = 0; i<input.length; i++) {
-            if (input[i] !== control[i]) {
-            alert("WRONG!")
-            return
-            }
-        }
-        alert("CORRECT!")
+  $: code = file;
+  $: l = file[0];
+
+  function load(string) {
+    for (let i = 0; i < file.length; i++) {
+      let line = file[i];
+      if (line.includes(string)) {
+        control[i] = line;
+        file[i] = line.replace(string, "input");
+      }
     }
+  }
 
+  function start() {
+    C101inputs.forEach(element => {
+      load(element);
+    });
+  }
+
+  function verify() {
+    console.log(input);
+    for (let i = 0; i < control.length; i++) {
+      if (input[i] !== control[i]) {
+        console.log(input[i] + " is not " + control[i]);
+        alert("WRONG");
+        return;
+      }
+    }
+    alert("CORRECT");
+  }
 </script>
 
 <style>
-    .code-area {
-        padding: 10%;
-        background-color: #676778;
-        color: #40b3ff;
-    }
-    input {
-        width: 20%;
-        background-color: #8d8da5;
-        color: #40b3ff;
-        margin: 0;
-        border: 0;
-        
-    }
+  .code-area {
+    padding: 10%;
+    background-color: #676778;
+    color: #40b3ff;
+  }
+  input {
+    width: 20%;
+    background-color: #8d8da5;
+    color: #40b3ff;
+    margin: 0;
+    border: 0;
+  }
 </style>
 
 <div>
-    <h2>Svelte Components: Basics</h2>
-    <br />
-    <div class="code-area">
-        <!-- Script tag -->
-        <code>1   <input bind:value={input[0]} /></code><br />
-        <code>2   {scripts}</code><br />
-        <code>3   <input bind:value={input[1]} /></code><br />
-        <!-- Style tag --><code>4</code>  <br />
-        <code>5   <input bind:value={input[2]} /></code><br />
-        <code>6   {style}</code><br />
-        <code>7   <input bind:value={input[3]} /></code><br />
-        <!-- html --><code>8</code>  <br />
-        <code>9   <input bind:value={input[4]} />{html}<input bind:value={input[5]} /></code><br />
-    </div>
-    <button on:click={verify}>Verify</button>
+  <h2>Svelte Components: Basics</h2>
+  <br />
+  <div class="code-area">
+    {#if code[0]}
+      {#each code as line, i}
+        {#if line.includes('input')}
+          <code>
+
+            <input bind:value={input[i]} />
+          </code>
+          <br />
+        {:else}
+          <code>{line}</code>
+          <br />
+        {/if}
+      {/each}
+    {/if}
+  </div>
+
+  <button on:click={start}>Start</button>
+  <button on:click={verify}>Verify</button>
 </div>
