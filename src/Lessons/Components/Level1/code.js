@@ -1,0 +1,15 @@
+export default [
+  "<script>",
+  '    let name = "World"',
+  "</script>",
+  "\n",
+  "<style>",
+  "p {",
+  "    color: blue",
+  "}",
+  "</style>",
+  "\n",
+  "<p>",
+  "    Hello {world}",
+  "</p>",
+];
