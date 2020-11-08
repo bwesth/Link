@@ -33,7 +33,7 @@
 <br />
 <div class="code-area">
   {#each displayedContent as line, index}
-    <code>{index} {line}</code>
+    <code>{index} &nbsp {line}</code>
     <br />
   {/each}
 </div>

@@ -3,14 +3,50 @@
   import Component201 from "./Lessons/Components/Level2/Component201.svelte";
   import CodeInput from "./CodeInput.svelte";
   import Lesson from "./Lesson.svelte";
+  import C102 from "./Lessons/Components/Level1/Component102.svelte";
 
   let lessons = [
     { name: "Components 101", component: Component101 },
-    { name: "Components 201", component: Component201 }
+    { name: "Components 201", component: Component201 },
+    { name: "Drag", component: C102 }
   ];
 
   let selected = lessons[0];
 </script>
+
+
+<div class="body">
+
+  <div class="prime">
+    <h1>SVELTE</h1>
+  </div>
+
+  <div class="flash">
+    <h1>-</h1>
+  </div>
+
+  <div class="second">
+    <h1>LINK</h1>
+  </div>
+</div>
+
+<div class="center">
+  <select bind:value={selected}>
+    {#each lessons as lesson}
+      <option value={lesson}>{lesson.name}</option>
+    {/each}
+  </select>
+</div>
+
+<Lesson>
+  <svelte:component this={selected.component} />
+</Lesson>
+
+
+
+
+
+
 
 <style>
   :root {
@@ -81,30 +117,3 @@
     align-items: center;
   }
 </style>
-
-<div class="body">
-
-  <div class="prime">
-    <h1>SVELTE</h1>
-  </div>
-
-  <div class="flash">
-    <h1>-</h1>
-  </div>
-
-  <div class="second">
-    <h1>LINK</h1>
-  </div>
-</div>
-
-<div class="center">
-  <select bind:value={selected}>
-    {#each lessons as lesson}
-      <option value={lesson}>{lesson.name}</option>
-    {/each}
-  </select>
-</div>
-
-<Lesson>
-  <svelte:component this={selected.component} />
-</Lesson>

@@ -62,12 +62,12 @@
       {#each code as line, i}
         {#if line.includes('input')}
           <code>
-
+            {i}
             <input bind:value={input[i]} />
           </code>
           <br />
         {:else}
-          <code>{line}</code>
+          <code>{i} &nbsp {line}</code>
           <br />
         {/if}
       {/each}
