@@ -1,9 +1,11 @@
 <script>
-  import C101 from "./code";
+  import C101 from "./C101";
   import { C101inputs } from "./inputs";
   let file = C101;
   let input = [],
     control = [];
+
+  const FileReader = window.FileReader;
 
   $: code = file;
   $: l = file[0];
