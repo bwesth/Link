@@ -5,6 +5,15 @@ const urls = [
   "https://9gag.com/",
 ];
 
+// chrome.storage.sync.set({
+//   list: urls,
+// });
+// let list;
+// chrome.storage.sync.get("list", function (data) {
+//   let list = data.list;
+//   console.log(list);
+// });
+
 // Redirection function passed to listeners below
 function redirect(tabId) {
   chrome.tabs.update(tabId, { url: "localhost:5000" });
